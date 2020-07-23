@@ -1,0 +1,74 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/theming';
+
+@include mat-core();
+$custom-theme-primary: mat-palette($mat-light-blue);
+$custom-theme-accent: mat-palette($mat-orange, A200, A100, A400);
+$custom-theme-warn: mat-palette($mat-red);
+
+$custom-theme: mat-light-theme($custom-theme-primary, $custom-theme-accent, $custom-theme-warn);
+@include angular-material-theme($custom-theme);
+$background: map-get($custom-theme, background);
+$card-width: 400px;
+$card-min-height: 500px;
+
+@mixin gt-small-phone {
+  @media (min-width: 480px) {
+    @content;
+  }
+}
+
+@mixin landscape {
+  @media (orientation: landscape) and (max-height: 479px) {
+    @content;
+  }
+}
+
+html, body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: silver;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  @include landscape {
+    justify-content: start;
+  }
+
+}
+
+.card {
+  min-height: 100%;
+  width: 100%;
+  background: mat-color($background, background);
+  @include gt-small-phone {
+    width: $card-width;
+    min-height: $card-min-height;
+    @include mat-elevation(2);
+  }
+  @include landscape {
+    margin: 12px;
+  }
+}
+
+.mat-toolbar {
+  position: fixed;
+  @include mat-elevation(1);
+  @include landscape {
+    position: relative;
+  }
+  @include gt-small-phone {
+    position: relative;
+  }
+}
+
