@@ -1,0 +1,12 @@
+<div *ngIf="data$ | async as data">
+    {{data | json}}
+</div>
+<div>
+    <mat-form-field>
+        <mat-label>Label</mat-label>
+        <input matInput type="text" [formControl]="formControl">
+    </mat-form-field>
+</div>
+<div style="padding-top:24px;">
+    <button mat-raised-button routerLink="second">Start</button>
+</div>

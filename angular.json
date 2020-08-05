@@ -54,7 +54,6 @@
             "styles": [
               "./node_modules/normalize.css/normalize.css",
               "src/reset.css",
-
               "src/styles.scss"
             ],
             "scripts": []
